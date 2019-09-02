@@ -1,10 +1,12 @@
 import "repository.dart";
 import "recipe.dart";
 import "view.dart";
+import "scraper.dart";
 
 class Controller{
   Cookbook cookbook;
   View view = new View();
+  Scraper scraper = new Scraper();
   Controller(Cookbook cookbook){
     this.cookbook = cookbook;
   }
@@ -26,5 +28,13 @@ class Controller{
     view.list(recipes);
     int index = view.ask_for_index();
     this.cookbook.delete(index);
+  }
+
+  scrape() async {
+    String query = view.ask_for_query();
+    var recipes = await scraper.scrapeRecipes(query);
+    view.list(recipes);
+    int index = view.ask_for_index();
+     this.cookbook.add(recipes[index]);
   }
 }

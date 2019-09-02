@@ -8,7 +8,7 @@ class Router{
     this.controller = controller;
   }
 
-  start(){
+  start() async {
     bool condition = true;
     print("Welcome to the cookbook");
     while (condition){
@@ -24,6 +24,9 @@ class Router{
 
         case 3: { this.controller.destroy(); } 
         break; 
+
+        case 4: { await this.controller.scrape(); } 
+        break; 
       } 
     }
   }
@@ -33,6 +36,7 @@ class Router{
     print("1 - List the recipes");
     print("2 - Add a recipe");
     print("3 - Remove a recipe");
+    print("4 - Get inspire1");
     print("5 - Quit");
     return int.parse(stdin.readLineSync());
   }
