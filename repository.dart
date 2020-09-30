@@ -9,10 +9,7 @@ import 'dart:convert'; // Contains the `Utf8Decoder` and `LineSplitter` stream t
 class Cookbook{
   List recipes;
   String filepath;  
-  Cookbook(filepath, recipes){
-    this.filepath = filepath;
-    this.recipes = recipes;
-  }
+  Cookbook(this.filepath, this.recipes);
 
   all() { 
     return this.recipes; 
